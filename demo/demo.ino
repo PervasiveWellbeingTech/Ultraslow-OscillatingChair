@@ -70,6 +70,28 @@ void oscillate(int duration) {
   stopAll();
 }
 
+void rockChair(int duration, int count, bool infinite) {
+  for (int i = 0; i < count; ++i) {
+    // Left up
+    extendLinearActuator(1);
+    extendLinearActuator(2);
+    retractLinearActuator(3);
+    retractLinearActuator(4);
+    
+    delay(duration);
+  
+    // Right up
+    retractLinearActuator(1);
+    retractLinearActuator(2);
+    extendLinearActuator(3);
+    extendLinearActuator(4);
+
+    if (infinite) {
+      i -= 1;
+    }
+  }
+}
+
 void takeSerialInput() {
   while (Serial.available() == 0) {
     // Wait for user input  
@@ -96,6 +118,7 @@ void takeSerialInput() {
 
 void loop() {
 //  takeSerialInput();
-  oscillate(3000);
+//  oscillate(3000);
+  rockChair(3000, 5, true);
 }
 
