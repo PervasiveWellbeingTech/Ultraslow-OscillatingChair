@@ -1,0 +1,225 @@
+<html>
+
+<body>
+
+	<br><br><br>
+
+	<center>
+	<h1>
+		Time left: <b id="time">300</b>
+
+		<br><br>
+
+		What is <b id="num1">a</b> <b id="op"></b> <b id="num2"></b>?
+	</h1>
+
+	<br><br>
+
+	<input type="text" id="ans" />
+
+	<br><br>
+
+	<h1>
+		Number correct: <b id="score">0</b>
+
+		<!-- <br><br> -->
+
+		<!-- Time left: <b id="time">300</b> -->
+	</h1>
+
+	</center>
+
+	<div id="counter">0</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="setImmediate.js"></script>
+	<script>
+
+		function getRandomInt(max, min=0) {
+			return Math.floor(Math.random() * (max - min) + min);
+		}
+
+		function getRandomNDigitNumber(n){
+			var num = getRandomInt(1, 9) * Math.pow(10, n-1);
+			return num + getRandomNDigitNumberHelper(n-1);
+		}
+
+		function getRandomNDigitNumberHelper(n) {
+			if (n <= 0) {
+				return 0;
+			}
+			var num = getRandomInt(0, 9) * Math.pow(10, n-1);
+			return num + getRandomNDigitNumberHelper(n-1);
+		}
+
+		function getRandomDivisor(num) {
+			var divisors = [1, num];
+			for (var i = 2; i < num / 2; ++i) {
+				if (num % i === 0) {
+					divisors.push(i);
+				}
+			}
+			return divisors[Math.floor(Math.random() * divisors.length)];
+		}
+
+		function getRandomCombination() {
+			op = possibleOps[Math.floor(Math.random() * possibleOps.length)];
+			if (op === "+" || op === "-") {
+				num1 = getRandomNDigitNumber(4);
+				num2 = getRandomNDigitNumber(4);
+				ans  = getAns(num1, num2, op);
+				return;
+			}
+
+			num1 = getRandomNDigitNumber(2);
+			if (op === "x") {
+				num2 = getRandomNDigitNumber(2);
+				ans  = num1 * num2;
+				return;
+			}
+
+			num2 = getRandomDivisor(num1);
+			ans = num1 / num2;
+		}
+
+		function getAns(num1, num2, op) {
+			if (op === "x") {
+				return num1 * num2;
+			}
+			if (op === "/") {
+				return num1 / num2;
+			}
+			if (op === "+") {
+				return num1 + num2;
+			}
+			if (op === "-") {
+				return num1 - num2;
+			}
+		}
+
+		var possibleOps = ["+"]; //["x", "/", "+", "-"];
+
+		var score = 0;
+		var timeLeft = 300;
+
+		var num1 = 0;
+		var num2 = 0;
+		var op 	 = 0;
+		var ans  = 0;
+		getRandomCombination();
+		// console.log(num1, op, num2, ans);
+
+		$(document).ready(function() {
+			getRandomCombination();
+			// console.log(num1, op, num2, ans);
+
+			$("#num1").text(num1 + "");
+			$("#op").text(op);
+			$("#num2").text(num2 + "");
+
+			$("#ans").on("change paste keyup", function() {
+				if (timeLeft <= 0) {
+					return;
+				}
+
+    			var num = parseInt($("#ans").val());
+
+				// console.log(num);
+				// console.log(ans);
+
+				if (num === ans) {
+					score++;
+					// console.log("Score is", score);
+					$("#score").text(score);
+
+					getRandomCombination();
+					// console.log(num1, op, num2, ans);
+
+					$("#num1").text(num1 + "");
+					$("#op").text(op);
+					$("#num2").text(num2 + "");
+
+					$("#ans").val("");
+				}
+			});
+
+			var count = 0;
+
+			function interval(func, wait, times) {
+			    var interv = function(w, t){
+			        return function(){
+			            if(typeof t === "undefined" || t--> 0){
+			                setTimeout(interv, w);
+			                try{
+			                    func.call(null);
+			                }
+			                catch(e){
+			                    t = 0;
+			                    throw e.toString();
+			                }
+			            }
+			        };
+			    } (wait, times);
+
+			    setTimeout(interv, wait);
+			};
+		
+			// var update1 = function() {
+			// 	count++;
+			// 	$("#counter").html(count);
+			// 	// if (count % 1000 === 0) {
+			// 	// 	// document.body.style.backgroundColor = "#00FF00";
+			// 	// 	setImmediate(update2);
+			// 	// }
+
+			// 	if (count % 4000 === 0 && timeLeft > 0) {
+			// 		timeLeft--;
+			// 		$("#time").text(timeLeft + "");
+			// 	}
+
+			// 	setImmediate(update1);
+			// };
+
+			// var update2 = function() {
+			// 	document.body.style.backgroundColor = "#FFFFFF"; 
+			// }
+
+			// setImmediate(update1);
+
+			document.getElementById("ans").addEventListener('mousedown', startHandler, false);
+
+			function startHandler(e) {
+				if (timeLeft > 0) {
+					setTimeout(updateTime, 1000);
+				}
+
+				function updateTime() {
+					--timeLeft;
+					$("#time").text(timeLeft + "");
+					if (timeLeft > 0) {
+						setTimeout(updateTime, 1000);
+					}
+				}
+			}
+
+			document.addEventListener('keydown', keyHandler, false);
+
+			function keyHandler(e) {
+				if (timeLeft <= 0) {
+					var refresh = [16];
+				    var next = [17];
+				    
+				    if (refresh.includes(e.keyCode)) {
+				        location.reload();
+				    } else if (next.includes(e.keyCode)) {
+				        window.location = "SingASong.html";
+				    }
+				}
+			}
+
+		});
+	</script>
+</body>
+
+
+</html>

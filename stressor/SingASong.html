@@ -1,0 +1,92 @@
+<html>
+
+<body style="margin: 20px;">
+
+	<br><br><br>
+
+	<center>
+		<h1>
+			Timer: <b id="time"> </b>
+
+			<br><br>
+
+			<b id="text"> </b>
+		</h1>
+
+		<br><br>
+
+	</center>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		console.log("Start time: ", new Date());
+
+		var logs = [];
+
+		var updateTexts = {
+			sentences: ["You will now be shown some messages on the screen.",
+						"Please read the message and stay seated in your seat.",
+						"Some message(s) may contain a task that you must perform. Please pay close attention to this.",
+						"The first vacuum cleaner was constructed by Sweep Company. This was in 1907 and the device was called hoover.",
+						"A snake can sense a coming earthquake from 75 miles away, upto 5 days before it happens.",
+						"Start singing a song aloud when the counter reaches zero. You must sing for 15 seconds. Keep sitting still until that moment.",
+						"Sing a song aloud until the counter reaches zero.",
+						"You will now be shown certain prompts on the screen. Read the prompts carefully. The prompts will ask for your opinion on a certain topic. You will have 25 seconds to prepare your response. After the timer runs out, you will have 45 seconds to speak your answer.",
+						"What would you suggest to somebody if he was planning to come to your country to study abroad? Give details and examples to support your response.",
+						"Speak your anwer to: \"What would you suggest to somebody if he was planning to come to your country to study abroad? Give details and examples to support your response.\"",
+						"Your friend’s brother has begun spending time with a group of people that your friend thinks may not be very good people. He wants to talk with his brother but does not know what to say. What advice would you give him?",
+						"Speak your anwer to: \"Your friend’s brother has begun spending time with a group of people that your friend thinks may not be very good people. He wants to talk with his brother but does not know what to say. What advice would you give him?\"",
+						"Your friend’s young sister has asked for music lessons, but your friend doesn’t know what instrument she should study. What advice would you give?",
+						"Speak your anwer to: \"Your friend’s young sister has asked for music lessons, but your friend doesn’t know what instrument she should study. What advice would you give?\""
+						],
+			// durations: [15, 15, 20, 30, 30, 60, 15, 60, 25, 45, 25, 45, 25, 45]
+			durations: [5,5,5,5,5,5,5,5,5,5,5,5,5,5]
+			// durations: [2, 2, 2, 5, 5, 5]
+		}
+
+		var index = 0;
+		var timeLeft = 0;
+
+		// setTimeout(updateAll, 0);
+		var timeout_var = setTimeout(updateTime, 0);
+
+		function updateAll() {
+			if (index < updateTexts.sentences.length) {
+				var eventTime = new Date().getTime();
+				logs.push(eventTime);
+
+				timeLeft = updateTexts.durations[index];
+				$("#time").text(updateTexts.durations[index] + "");
+				$("#text").text(updateTexts.sentences[index] + "");
+				setTimeout(updateAll, updateTexts.durations[index] * 1000 + 1000);
+				++index;
+			}
+		}
+
+		function updateTime() {
+			if (timeLeft > 0) {
+				--timeLeft;
+				$("#time").text(timeLeft + "");
+				// timeout_var = setTimeout(updateTime, 1000);
+			} else if (timeLeft === 0 && index < updateTexts.sentences.length) {
+				var eventTime = new Date().getTime();
+				logs.push(eventTime);
+
+				timeLeft = updateTexts.durations[index];
+				$("#time").text(updateTexts.durations[index] + "");
+				$("#text").text(updateTexts.sentences[index] + "");
+				// setTimeout(updateAll, updateTexts.durations[index] * 1000 + 1000);
+				++index;
+			}
+			timeout_var = setTimeout(updateTime, 1000);
+			if (timeLeft <= 0 && index === updateTexts.sentences.length) {
+				console.log("Message time change logs: ", logs);
+				clearTimeout(timeout_var);
+			}
+		}
+
+	</script>
+</body>
+
+
+</html>
