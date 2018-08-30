@@ -1,6 +1,6 @@
 const int numOfActuators = 4;
-const int relay1Pins[] = {2, 4, 6, 8};
-const int relay2Pins[] = {3, 5, 7, 9};
+const int relay1Pins[] = {12, 10, 8, 6};
+const int relay2Pins[] = {11, 9, 7, 5};
 
 void setup() { 
   //start serial connection
@@ -70,8 +70,8 @@ void oscillate(int duration) {
   stopAll();
 }
 
-void rockChair(int duration, int count, bool infinite) {
-  for (int i = 0; i < count; ++i) {
+void rockChair(int duration) {
+  
     // Left up
     extendLinearActuator(1);
     extendLinearActuator(2);
@@ -86,10 +86,7 @@ void rockChair(int duration, int count, bool infinite) {
     extendLinearActuator(3);
     extendLinearActuator(4);
 
-    if (infinite) {
-      i -= 1;
-    }
-  }
+    delay(duration);
 }
 
 void takeSerialInput() {
@@ -119,6 +116,10 @@ void takeSerialInput() {
 void loop() {
 //  takeSerialInput();
 //  oscillate(3000);
-  rockChair(3000, 5, true);
+  rockChair(3000);
+//  extendLinearActuator(1);
+//  extendLinearActuator(2);
+//  extendLinearActuator(3);
+//  extendLinearActuator(4);
 }
 

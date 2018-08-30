@@ -15,6 +15,9 @@ void setup() {
     digitalWrite(relay1Pins[i], LOW); 
     digitalWrite(relay2Pins[i], LOW); 
   }
+
+  down();
+  delay(15000);
 }
 
 void extendLinearActuator(int actuatorNum) {
@@ -153,6 +156,26 @@ void callibrate() {
   delay(5000);
 }
 
+void controlledRockChair(int rockDuration, int intervalDuration) {
+  // Left up
+  extendLinearActuator(2);
+  retractLinearActuator(4);
+  delay(rockDuration);
+
+  stopLinearActuator(2);
+  stopLinearActuator(4);
+  delay(intervalDuration);
+
+  // Right up
+  retractLinearActuator(2);
+  extendLinearActuator(4);
+  delay(rockDuration);
+
+  stopLinearActuator(2);
+  stopLinearActuator(4);
+  delay(intervalDuration);
+}
+
 void pilot() {
   down();
   delay(15000);
@@ -165,6 +188,7 @@ void loop() {
 //  rockChair(3000, 5, true);
 //  callibrate();
 
-  pilot();
+//  pilot();
+  controlledRockChair(1500, 2000);
 }
 
