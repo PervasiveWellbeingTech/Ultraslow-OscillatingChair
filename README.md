@@ -47,3 +47,5 @@ Participants are divided into a control group, which receives no intervention, a
 Code for Math and Sing-a-Song stressors. The tests are in the form of a webpage.
 
 The math stressor runs for 300 seconds. After the time elapses, press <kbd>Shift</kbd> to automatically restart, and press <kbd>Ctrl</kbd> to switch to the Sing-a-Song test.
+
+Thanks @Peter Washingtion for developing the Mental Math stressor, which this version is heavily based upon. The original can be found in the #GreenWebsite.
