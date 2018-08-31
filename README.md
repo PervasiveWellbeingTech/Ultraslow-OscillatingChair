@@ -2,6 +2,8 @@
 
 Refactoring the age-old technique into a workplace intervention through a robotic chair that automatically intervenes for users’ comfort.
 
+<img src="assets/chair_1.jpg" height="400" title="Smart Rocking Chair">
+
 ## Motivation
 
 Sitting is the new smoking. First enunciated by Mayo clinic’s Dr. Levine, and subsequently popularized by dozens of journalistic posts on the topic, this phrase has caught public imagination because of the sheer ubiquity of act of sitting. An average adults spends 50-70% of their day sitting. This can lead to diabetes, cardiovascular diseases, and even premature death, and any amount of exercise done duirng the rest of the day doesn't really make up for the harnful effects of extensive sitting. Since reducing this sitting time is not practical, we attempt to make the time we spend sitting less harmful.
