@@ -33,3 +33,9 @@ Participants are divided into a control group, which receives no intervention, a
 - ```single_actuator``` and ```multiple_actuators``` have modular versions of motor driver code for single and multiple actuator systems, respectively.
   
 - Before using any program, ensure that the pin numbers on your Arduino board match those in the code.
+
+# Stressor
+
+Code for Math and Sing-a-Song stressors. The tests are in the form of a webpage.
+
+The math stressor runs for 300 seconds. After the time elapses, press <kbd>Shift</kbd> to automatically restart, and press <kbd>Ctrl</kbd> to switch to the Sing-a-Song test.
