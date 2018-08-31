@@ -20,7 +20,11 @@ In order to bring the benefits of rocking into office settings, we investigate t
 
 ## Experiment
 
-Participants are divided into a control group, which receives no intervention, and an experiment group, which receives a static 1/6 Hz sideways rocking as a stimulus. Participants perform a series of tasks including the Stroop test, the Sing-a-Song stress test, and modifications of the Trier Social Stress Test. The outputs we measure include • STAI-Y-1 scores to measure self-reported state anxiety before and after the stressor • Galvanic Skin Resistance (GSR), as a metric of arousal and stress • Heart Rate, as a measure of stress • Response Time, as a measure of focus, and • Accuracy, as a measure of task performance. 
+Participants are divided into a control group, which receives no intervention, and an experiment group, which receives a static 1/6 Hz sideways rocking as a stimulus. Participants perform a series of tasks including the Stroop test, the Sing-a-Song stress test, and modifications of the Trier Social Stress Test. The outputs we measure include • STAI-Y-1 scores to measure self-reported state anxiety before and after the stressor • Galvanic Skin Resistance (GSR), as a metric of arousal and stress • Heart Rate, as a measure of stress • Response Time, as a measure of focus, and • Accuracy, as a measure of task performance.
+
+<p align="center">
+  <img src="assets/chair_3.gif" height="400" title="Smart Rocking Chair">
+</p>
 
 ## Wiki
 
