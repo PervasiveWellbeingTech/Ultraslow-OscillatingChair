@@ -2,7 +2,7 @@
 
 Refactoring the age-old technique into a workplace intervention through a robotic chair that automatically intervenes for users’ comfort.
 
-<img src="assets/chair_1.jpg" height="400" title="Smart Rocking Chair">
+<img src="assets/chair_2.png" height="400" title="Smart Rocking Chair">
 
 ## Motivation
 
